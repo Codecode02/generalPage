@@ -23,5 +23,3 @@ reviewBlocks.forEach(block => {
 
     showSlide(currentIndex);
 });
-
-document.getElementById('block1').classList.add('active');
