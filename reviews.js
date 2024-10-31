@@ -29,7 +29,7 @@ reviewBlocks.forEach((block) => {
 
   showSlide(currentIndex);
 
-  const intervalId = setInterval(nextPage, 3000, currentIndex)
+  const intervalId = setInterval(nextPage, 5000, currentIndex)
 
     setTimeout(clearInterval,900000,intervalId)
 });
