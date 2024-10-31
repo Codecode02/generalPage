@@ -1,25 +1,35 @@
-const reviewBlocks = document.querySelectorAll('.reviews');
+const reviewBlocks = document.querySelectorAll(".reviews");
 
-reviewBlocks.forEach(block => {
-    const slides = block.querySelectorAll('.slide');
-    let currentIndex = 0;
+reviewBlocks.forEach((block) => {
+  const slides = block.querySelectorAll(".slide");
+  let currentIndex = 0;
 
-    
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
-    }
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
 
-    block.querySelector('.arrowLeft').addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-        showSlide(currentIndex);
-    });
-
-    block.querySelector('.arrowRight').addEventListener('click', () => {
-        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-        showSlide(currentIndex);
-    });
-
-
+  function prevPage() {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1
     showSlide(currentIndex);
+  }
+
+  function nextPage(){
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        showSlide(currentIndex);
+  }
+
+  block.querySelector(".arrowLeft").addEventListener("click", () => {
+    prevPage()
+  });
+
+  block.querySelector(".arrowRight").addEventListener("click", () => {
+    nextPage()
+  });
+
+  showSlide(currentIndex);
+
+  const intervalId = setInterval(nextPage, 3000, currentIndex)
+
+    setTimeout(clearInterval,900000,intervalId)
 });
